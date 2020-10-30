@@ -25,16 +25,15 @@ jobs:
           node-version: 14.x
 
       - name: Install esy
-        run: npm install -g esy@0.6.7
+        run: npm install -g esy@0.6.4
 
       - name: Create esy wrapper
         run: |
           echo '{
             "esy": {
-              "build": "pkg-config --cflags -libs libseccomp"
+              "build": "pkg-config --cflags libseccomp"
             },
             "dependencies": {
-              "ocaml": "~4.10.1002",
               "esy-libseccomp": "github:'"${GITHUB_REPOSITORY}"'#'"${GITHUB_SHA}"'"
             }
           }' > test.json
